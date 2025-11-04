@@ -1,0 +1,545 @@
+@keyframes shine {
+    0% {
+      background-position: -200px 0;
+    }
+    100% {
+      background-position: 200px 0;
+    }
+  }
+  
+  .block1 h1, .block2 h1 {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    background: linear-gradient(120deg, #ffffff 0%, #aaa 50%, #ffffff 100%);
+    background-size: 200px 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: shine 3s infinite linear;
+}
+ 
+
+@keyframes metallicShine {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .buttonmain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 52px;
+    border-radius: 100px;
+    background: linear-gradient(96deg, #F6C26B, #E7C78E, #CAA766, #F3DCBB, #D1A354, #F2D7AB);
+    background-size: 300% 300%; /* важно для анимации */
+    animation: metallicShine 4s ease-in-out infinite;
+    color: #000000;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Gilroy', sans-serif;
+    margin-right: 10px;
+  }
+
+  
+@keyframes slideInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-100px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+  
+  @keyframes slideInBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(100px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  @keyframes slideInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(100px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+  
+  .page1cont > div {
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+  
+  .block1 {
+    animation: slideInLeft 1s ease-out;
+    animation-delay: 0.2s;
+  }
+  
+  .block2 {
+    animation: slideInBottom 1s ease-out;
+    animation-delay: 0.8s;
+  }
+  
+  .block3 {
+    animation: slideInRight 1s ease-out;
+    animation-delay: 1.4s;
+  }
+
+  @keyframes slideInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(100px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+  
+  @keyframes levitate {
+    0% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-10px) scale(1.02);
+    }
+    100% {
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  .block3 {
+    opacity: 0;
+    animation: slideInRight 1s ease-out forwards, 
+               levitate 3s ease-in-out infinite;
+    animation-delay: 1.4s, 2.4s; 
+  }
+  @keyframes levitateSmall {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes levitateMedium {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .img1 {
+    animation: levitateSmall 4s ease-in-out infinite;
+  }
+  
+  .img2 {
+    animation: levitateMedium 5s ease-in-out infinite;
+  }
+  .button:hover{
+    opacity: 0.4;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000; /* чёрный фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeOut 2s forwards;
+    animation-delay: 2s;
+}
+.preloader img{
+  width: 400px;
+}
+.loader-text {
+    color: white;
+    font-size: 48px;
+    font-family: 'SF Pro Display', sans-serif;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
+body.loading .main {
+    opacity: 0;
+}
+
+body:not(.loading) .main {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+body.loading .page1cont > div {
+    opacity: 0;
+    animation: none !important;
+}
+
+
+
+body:not(.loading) .block2 {
+    animation: slideInBottom 1s ease-out forwards;
+    animation-delay: 0.8s;
+}
+
+body:not(.loading) .block3 {
+    animation: slideInRight 1s ease-out forwards, 
+               levitate 3s ease-in-out infinite;
+    animation-delay: 1.4s, 2.4s;
+}
+
+
+@keyframes silverShine {
+  0% {
+    background-position: -200%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+.metallic-text {
+  background: linear-gradient(
+    120deg,
+    #cfd8dc,
+    #eceff1,
+    #666666,
+    #ffffff,
+    #303030,
+    #cfd8dc
+  );
+  background-size: 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: silverShine 10s linear infinite;
+}
+/* Активный пункт меню */
+.page5nav1.active {
+  background: linear-gradient(95deg, #F6C26B, #F2D7AB);
+  color: black;
+}
+
+/* Эффекты слайдера */
+.slider-track {
+  transition: transform 0.6s ease;
+}
+
+.slide {
+  transition: transform 0.6s ease, filter 0.6s ease;
+  flex: 0 0 33.333%; /* показываем 3 слайда */
+  display: flex;
+  justify-content: center;
+}
+
+.slide img {
+  width: 70%;
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.slide.center img {
+  transform: scale(1.2);
+  filter: none;
+}
+
+.slide.left img,
+.slide.right img {
+  transform: scale(0.85);
+  filter: blur(2px) brightness(70%);
+}
+/* ——— оболочка ——— */
+.preloader{
+  position:fixed;inset:0;background:#000;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  z-index:9999;
+  transition:opacity .4s ease;
+}
+.preloader.hide{opacity:0;pointer-events:none}
+
+/* ——— логотип ——— */
+.loader-logo{
+  width:160px;                                /* нужный размер */
+  opacity:0;                                  /* ❶ старт прозрачный */
+  animation:fadeInLogo 1.6s forwards;         /* плавное появление */
+}
+
+/* класс добавляется JS‑ом при 100 % */
+.loader-logo.bounce{
+  animation:logoBounce .8s cubic-bezier(.3,.8,.3,1.3) forwards;
+}
+
+/* ——— полоска ——— */
+.loader-bar-container{
+  width:220px;height:8px;margin-top:40px;
+  border-radius:4px;overflow:hidden;
+  background:rgba(255,255,255,.15);
+}
+.loader-bar{
+  width:0;height:100%;
+  background:linear-gradient(95deg,#F6C26B,#E7C78E,#CAA766,#F3DCBB,#D1A354,#F2D7AB);
+  background-size:300% 300%;
+  animation:metal 3s linear infinite;
+}
+
+/* ——— keyframes ——— */
+@keyframes fadeInLogo{
+  to{opacity:1}
+}
+@keyframes logoBounce{
+  0%  {transform:scale(1)}
+  65% {transform:scale(1.25)}
+  100%{transform:scale(0);opacity:0}
+}
+@keyframes metal{
+  0%{background-position:0 0}
+  100%{background-position:100% 0}
+}
+
+
+/* ---------- ПРЕЛОАДЕР ---------------------------------------------------- */
+
+/* заливка логотипа */
+.loader-logo::after{
+  content:'';
+  position:absolute;inset:0;
+  background:#F6C26B;
+  mask:url('/img/tot.svg') 50%/contain no-repeat;
+  -webkit-mask:url('/img/tot.svg') 50%/contain no-repeat;
+  transform-origin:top;
+  transform:scaleY(0);
+  animation:logoFill 1.1s linear forwards;
+}
+
+/* «вылет» и отскок */
+.loader-logo.fly{
+  animation:logoFly 2.25s cubic-bezier(.8,-0.05,.2,1.1) forwards;
+}
+
+@keyframes logoFill{to{transform:scaleY(1)}}
+@keyframes logoFly{
+  0%  {transform:scale(1)   translateZ(0) rotate(0deg);   opacity:1}
+  40% {transform:scale(3)  translateZ(0) rotate(0deg); opacity:1} /* к зрителю + полтора оборота */
+  80% {transform:scale(.85) translateZ(0) rotate(0deg); opacity:.9}
+ 100% {transform:scale(1)   translateZ(0) rotate(0deg); opacity:0}
+}
+/* старт до скролла */
+.reveal{
+  opacity:0;
+  transform:translateY(60px);     /* слегка снизу */
+  transition:opacity .7s ease, transform .7s ease;
+}
+
+/* когда секция попала в кадр ------------------------------------ */
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
+
+/* (необязательно) «ступенчатое» проявление внутренних элементов */
+.reveal.stagger > *{
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity .6s ease, transform .6s ease;
+}
+.reveal.stagger.show > *{
+  opacity:1;transform:none;
+}
+.reveal.stagger.show > *:nth-child(1){transition-delay:.1s}
+.reveal.stagger.show > *:nth-child(2){transition-delay:.3s}
+.reveal.stagger.show > *:nth-child(3){transition-delay:.5s}  /* … */
+
+#intro-mask {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+  pointer-events: none;
+}
+
+#intro-mask img {
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+body.loading .main {
+  opacity: 1;
+}
+body:not(.loading) .main {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+body.loading .main { opacity: 0; }#intro-mask {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  z-index: 9999; /* Поверх всего */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* Чтобы клик проходил сквозь */
+}
+
+#intro-mask img {
+  width:100%;
+  height: auto;
+  object-fit: contain;
+}
+@keyframes introFlyAway {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(300);
+    opacity: 0.9;
+  }
+}
+
+#intro-mask.fly-away {
+  animation: introFlyAway 1.8s ease-in-out forwards;
+}
+/* Скрываем всё при старте */
+header,
+.page1 h1.metallic-text,
+.leftcount,
+.rightcount {
+  opacity: 0;
+}
+
+/* Центр с баунсом */
+.center {
+  transform: scale(0);
+  opacity: 0;
+  animation: centerBounceIn 1.4s ease-out forwards;
+}
+
+@keyframes centerBounceIn {
+  0%   { transform: scale(0);     opacity: 0; }
+  60%  { transform: scale(1.25);  opacity: 1; }
+  80%  { transform: scale(0.95);  opacity: 1; }
+  100% { transform: scale(1);     opacity: 1; }
+}
+
+/* Всё остальное появляется после */
+body.reveal-start header,
+body.reveal-start .page1 h1.metallic-text,
+body.reveal-start .leftcount,
+body.reveal-start .rightcount {
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+.leftcount {
+  opacity: 0;
+  transform: translateX(-100vw);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.rightcount {
+  opacity: 0;
+  transform: translateX(100vw);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+body.reveal-start .leftcount {
+  transform: translateX(0);
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+body.reveal-start .rightcount {
+  transform: translateX(0);
+  opacity: 1;
+  transition-delay: 0.4s;
+}
+.leftcount,
+.rightcount {
+  opacity: 0;
+  transform: scale(0.95);
+}
+.reveal-delayed {
+  opacity: 0;
+  transform: translateY(60px) scale(0.95);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+body.reveal-start .reveal-delayed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.intro-wrap {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-wrap video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* скрытие интро */
+.intro-wrap.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+}
+.lb-layer{
+  position:absolute; inset:0; margin:auto;
+  max-width:90vw; max-height:90vh;
+  transition:transform .35s ease, opacity .35s ease;
+}
+
+.to-left   {transform:translateX(-100vw);opacity:0}
+.from-right{transform:translateX( 100vw);opacity:0}
+.to-right  {transform:translateX( 100vw);opacity:0}
+.from-left {transform:translateX(-100vw);opacity:0}
