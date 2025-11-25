@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://storage.yandexcloud.net" crossorigin>
+    <link rel="dns-prefetch" href="https://storage.yandexcloud.net">
+    <link rel="preconnect" href="https://v1.fontapi.ir" crossorigin>
+    <link rel="dns-prefetch" href="https://v1.fontapi.ir">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="animation.css">
     <link rel="stylesheet" href="mobile.css">
     <link rel="icon" type="image/webp" href="https://storage.yandexcloud.net/innowhite-gif-bucket/logomain.webp">
-    <link href="https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Light.css" rel="stylesheet">
-    <link href="https://raw.githubusercontent.com/repalash/gilroy-free-webfont/fonts/Gilroy-Light.css" rel="stylesheet">
-    <link rel="preconnect" href="//fdn.fontcdn.ir">
-    <link rel="preconnect" href="//v1.fontapi.ir">
     <link href="https://v1.fontapi.ir/css/SFProDisplay" rel="stylesheet">
     <title>InnoWhite</title>
 
@@ -22,16 +22,16 @@
 
     <div id="intro-video-wrap" class="intro-wrap" >
         <video id="intro-video" playsinline webkit-playsinline autoplay muted loop preload="auto">
-            <source src="https://storage.yandexcloud.net/innowhite-gif-bucket/into.webm" type="video/mp4">
+            <source src="https://storage.yandexcloud.net/innowhite-gif-bucket/into.webm" type="video/webm">
         </video>
-        <img id="intro-fallback" alt="Intro" style="display: none;">
+        <img id="intro-fallback" alt="Intro" style="display: none;" loading="eager">
     </div>
 
     <div class="main">
         <div class="headb"></div>
         <header class="reveal-delayed">
             <nav class="header">
-                <a href="#page0" class="logo"><img src="https://storage.yandexcloud.net/innowhite-gif-bucket/Group 20.svg" alt=""></a>
+                <a href="#page0" class="logo"><img src="https://storage.yandexcloud.net/innowhite-gif-bucket/Group 20.svg" alt="" loading="eager" fetchpriority="high"></a>
                 <a href="#page1">О компании</a>
                 <a href="#page5">Преимущества</a>
                 <a href="#page4">Ассортимент</a>
@@ -45,7 +45,7 @@
         <header class="mobile-header">
             <div class="mobile-header-inner">
                 <a href="#page0" class="mobile-logo">
-                    <img src="https://storage.yandexcloud.net/innowhite-gif-bucket/Group 20.svg" alt="Logo" />
+                    <img src="https://storage.yandexcloud.net/innowhite-gif-bucket/Group 20.svg" alt="Logo" loading="eager" fetchpriority="high" />
                 </a>
                 <div class="burger" id="burger">
                     <span></span>
@@ -74,10 +74,8 @@
                     <div class="block1">
                         <div class="leftcount" reveal-delayed>
                             <p></p>
-                            <video id="desvid" src="https://storage.yandexcloud.net/innowhite-gif-bucket/Gen2.mp4" autoplay loop muted playsinline preload="none"
-                                loading="lazy"></video>
-                            <video id="mobvid" src="https://storage.yandexcloud.net/innowhite-gif-bucket/mobiletooth.mp4" autoplay loop muted playsinline preload="none"
-                                loading="lazy"></video>
+                            <video id="desvid" src="https://storage.yandexcloud.net/innowhite-gif-bucket/Gen2.mp4" loop muted playsinline preload="none" loading="lazy"></video>
+                            <video id="mobvid" src="https://storage.yandexcloud.net/innowhite-gif-bucket/mobiletooth.mp4" loop muted playsinline preload="none" loading="lazy"></video>
                             <!-- <a href="" class="button" id="page1">
                                 <div class="buttonmain">
                                     Подробнее
@@ -89,14 +87,13 @@
                         </div >
 
                         <div class="center">
-                            <video id="tooth-video" playsinline webkit-playsinline autoplay muted loop>
+                            <video id="tooth-video" playsinline webkit-playsinline muted loop preload="metadata" autoplay>
   <source src="https://storage.yandexcloud.net/innowhite-gif-bucket/toothf.hevc.mp4" type="video/mp4">
 </video>
 
                         </div>
                         <div class="rightcount" reveal-delayed>
-                            <video src="https://storage.yandexcloud.net/innowhite-gif-bucket/Gen.mp4" autoplay loop muted playsinline preload="none"
-                                loading="lazy"></video>
+                            <video src="https://storage.yandexcloud.net/innowhite-gif-bucket/Gen.mp4" loop muted playsinline preload="none" loading="lazy"></video>
                             <p></p>
                         </div>
                     </div>
@@ -131,8 +128,7 @@
                 
             </div>
             <div class="vid1">
-                <video id="vid1" src="https://storage.yandexcloud.net/innowhite-gif-bucket/Gen4.mp4" autoplay loop muted playsinline preload="none"
-                    loading="lazy"></video>
+                <video id="vid1" src="https://storage.yandexcloud.net/innowhite-gif-bucket/Gen4.mp4" loop muted playsinline preload="none" loading="lazy"></video>
             </div>
             <div class="page6 reveal" >
                 <div class="page6cont">
@@ -169,8 +165,7 @@
                             
                         </div>
                         <div class="block62 reveal">
-                            <video src="https://storage.yandexcloud.net/innowhite-gif-bucket/tooth1.mp4" autoplay loop muted playsinline preload="none"
-                                loading="lazy"></video>
+                            <video src="https://storage.yandexcloud.net/innowhite-gif-bucket/tooth1.mp4" loop muted playsinline preload="none" loading="lazy"></video>
                         </div>
                     </div>
                 </div>
@@ -211,7 +206,7 @@
             </div>
             <div class="page5 reveal" id="page4">
                 <div class="absimg2 reveal">
-                    <video src="https://storage.yandexcloud.net/innowhite-gif-bucket/Gen4.mp4" autoplay loop muted playsinline preload="none" loading="lazy"></video>
+                    <video src="https://storage.yandexcloud.net/innowhite-gif-bucket/Gen4.mp4" loop muted playsinline preload="none" loading="lazy"></video>
                 </div>
                 <h1 class="metallic-text">АССОРТИМЕНТ</h1>
 
@@ -225,18 +220,18 @@
                 </div>
 
                 <div class="slider-container">
-                    <button class="slider-arrow left"><img src="https://storage.yandexcloud.net/innowhite-gif-bucket/Polygon 1.svg" alt="←"></button>
+                    <button class="slider-arrow left"><img src="https://storage.yandexcloud.net/innowhite-gif-bucket/Polygon 1.svg" alt="←" loading="lazy"></button>
 
                     <div id="slider-display">
-                        <div class="slide"><img id="desas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product11.webp" alt="Ополаскиватель"> <img id="mobas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product111.webp" alt="Ополаскиватель"></div>
-                        <div class="slide"><img id="desas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product21.webp" alt="Гели"><img id="mobas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product211.webp" alt="Ополаскиватель"></div>
-                        <div class="slide"><img id="desas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product31.webp" alt="Полоски"><img id="mobas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product311.webp" alt="Ополаскиватель"></div>
-                        <div class="slide"><img id="desas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product41.webp" alt="Наборы"><img id="mobas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product411.webp" alt="Ополаскиватель"></div>
-                        <div class="slide"><img id="desas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product51.webp" alt="Щётка"><img id="mobas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product511.webp" alt="Ополаскиватель"></div>
-                        <div class="slide"><img id="desas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product61.webp" alt="Паста"><img id="mobas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product611.webp" alt="Ополаскиватель"></div>
+                        <div class="slide"><img id="desas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product11.webp" alt="Ополаскиватель" loading="lazy"> <img id="mobas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product111.webp" alt="Ополаскиватель" loading="lazy"></div>
+                        <div class="slide"><img id="desas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product21.webp" alt="Гели" loading="lazy"><img id="mobas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product211.webp" alt="Ополаскиватель" loading="lazy"></div>
+                        <div class="slide"><img id="desas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product31.webp" alt="Полоски" loading="lazy"><img id="mobas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product311.webp" alt="Ополаскиватель" loading="lazy"></div>
+                        <div class="slide"><img id="desas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product41.webp" alt="Наборы" loading="lazy"><img id="mobas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product411.webp" alt="Ополаскиватель" loading="lazy"></div>
+                        <div class="slide"><img id="desas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product51.webp" alt="Щётка" loading="lazy"><img id="mobas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product511.webp" alt="Ополаскиватель" loading="lazy"></div>
+                        <div class="slide"><img id="desas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product61.webp" alt="Паста" loading="lazy"><img id="mobas" src="https://storage.yandexcloud.net/innowhite-gif-bucket/product611.webp" alt="Ополаскиватель" loading="lazy"></div>
                     </div>
 
-                    <button class="slider-arrow right"><img src="https://storage.yandexcloud.net/innowhite-gif-bucket/Polygon 2.svg" alt="→"></button>
+                    <button class="slider-arrow right"><img src="https://storage.yandexcloud.net/innowhite-gif-bucket/Polygon 2.svg" alt="→" loading="lazy"></button>
                 </div>
                 <a href="" class="button" id="sale">
                     <div class="buttonmain">
@@ -247,8 +242,7 @@
 
             <div class="page3 reveal ">
                 <div class="page3cont">
-                    <div class="absimg1"><video src="https://storage.yandexcloud.net/innowhite-gif-bucket//Gen.mp4" autoplay loop muted playsinline preload="none"
-                            loading="lazy"></video></div>
+                    <div class="absimg1"><video src="https://storage.yandexcloud.net/innowhite-gif-bucket//Gen.mp4" loop muted playsinline preload="none" loading="lazy"></video></div>
                     <h1 class="metallic-text">4 ШАГА ДО ИДЕАЛЬНОЙ ФОРМУЛЫ</h1>
                     <div class="mian3block">
                         <div class="blockp3">
@@ -298,7 +292,7 @@
                 <div id="page6"></div>
             </div>
             <div class="absimg3 reveal">
-                <video src="https://storage.yandexcloud.net/innowhite-gif-bucket/Gen1.mp4" autoplay loop muted playsinline preload="none" loading="lazy"></video>
+                <video src="https://storage.yandexcloud.net/innowhite-gif-bucket/Gen1.mp4" loop muted playsinline preload="none" loading="lazy"></video>
             </div>
             <div class="page7">
                 <div class="page7cont">
@@ -344,7 +338,7 @@
                     <img class="lb-img" src="" alt="">
                     <button class="lb-next">›</button>
                     <a href="https://www.instagram.com/innowhite.by" target="_blank" class="lb-more">
-                        Instagram <img src="https://storage.yandexcloud.net/innowhite-gif-bucket/instagram1.svg" alt="Instagram">
+                        Instagram <img src="https://storage.yandexcloud.net/innowhite-gif-bucket/instagram1.svg" alt="Instagram" loading="lazy">
                     </a>
                 </div>
             </div>
@@ -355,15 +349,15 @@
             <footer class="footer reveal" id="page8">
                 <div class="footer-top">
                     <div class="footer-logo">
-                        <img src="https://storage.yandexcloud.net/innowhite-gif-bucket/Group 20.svg" alt="InnoWhite Logo">
+                        <img src="https://storage.yandexcloud.net/innowhite-gif-bucket/Group 20.svg" alt="InnoWhite Logo" loading="lazy">
 
                         <p>Улыбка которая открывает двери и закрывает вопросы</p>
 
                         <div class="footer-social"><a id="inst" href="https://www.instagram.com/innowhite.by"
-                                target="_blank"><img src="https://storage.yandexcloud.net/innowhite-gif-bucket/inst.webp" alt="Instagram"></a>
+                                target="_blank"><img src="https://storage.yandexcloud.net/innowhite-gif-bucket/inst.webp" alt="Instagram" loading="lazy"></a>
                             <!-- <a href="https://ozon.ru/" target="_blank"><img src="https://storage.yandexcloud.net/innowhite-gif-bucket/ozz.webp" alt="Ozon"></a> -->
                             <a href="https://www.wildberries.ru/" target="_blank"><img src="https://storage.yandexcloud.net/innowhite-gif-bucket/wbb.webp"
-                                    alt="Wildberries"></a>
+                                    alt="Wildberries" loading="lazy"></a>
 
                         </div>
                     </div>
@@ -403,9 +397,9 @@
 
             <div class="modal__shops">
                 <!-- <a href="https://ozon.ru/" target="_blank"><img src="https://storage.yandexcloud.net/innowhite-gif-bucket/ozonw.svg" alt="Ozon"></a> -->
-                <a href="https://www.wildberries.ru" target="_blank"><img src="https://storage.yandexcloud.net/innowhite-gif-bucket/wb.svg" alt="Wildberries"></a>
+                <a href="https://www.wildberries.ru" target="_blank"><img src="https://storage.yandexcloud.net/innowhite-gif-bucket/wb.svg" alt="Wildberries" loading="lazy"></a>
                 <a href="https://www.instagram.com/innowhite.by" target="_blank"><img src="https://storage.yandexcloud.net/innowhite-gif-bucket/instagramw.svg"
-                        alt="Wildberries"></a>
+                        alt="Wildberries" loading="lazy"></a>
 
             </div>
 
@@ -413,7 +407,7 @@
     </div>
 
 </body>
-<script src="script.js">
+<script src="script.js" defer>
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -627,99 +621,55 @@ dots.forEach((dot, i) => dot.onclick = () => {
 
 
 <script>
-    window.addEventListener('load', () => {
-        // запускаем анимацию первого экрана
-        document.querySelector('.block1')?.classList.add('show');
-    });
-</script>
-<script>
-    window.addEventListener('load', () => {
-        // Центр появляется с анимацией
-        const body = document.body;
-
-        // После bounce-интро показываем всё остальное
-        setTimeout(() => {
-            body.classList.add('reveal-start'); // показывает всё
-            document.querySelector('.block1')?.classList.add('show');
-        }, 1400); // после centerBounceIn
-    });
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            document.body.classList.add('reveal-start');
-            document.querySelector('.block1')?.classList.add('show');
-        }, 1400); // после bounce центра
-    });
-</script>
-<script>
+    // Объединенный обработчик загрузки страницы
     window.addEventListener('load', () => {
         const introWrap = document.getElementById('intro-video-wrap');
         const video = document.getElementById('intro-video');
-
-        // Либо ждём окончания видео:
-        // video.addEventListener('ended', hideIntro);
-
-        // Либо авто-скрытие через N секунд:
-        setTimeout(hideIntro, 4000); // 4 секунды (можешь изменить)
-
+        
         function hideIntro() {
+            if (!introWrap) return;
             introWrap.classList.add('fade-out');
-
+            
             setTimeout(() => {
                 introWrap.remove();
                 document.querySelector('.center')?.classList.add('bounce-start');
                 document.body.classList.add('reveal-start');
                 document.querySelector('.block1')?.classList.add('show');
-            }, 1500); // после fade-out
+            }, 1500);
         }
-    });
-
-</script>
-<script>
-    window.addEventListener('load', () => {
-        const introWrap = document.getElementById('intro-video-wrap');
-        const video = document.getElementById('intro-video');
-
-        // Вариант 1: ждём окончания видео
-        video.addEventListener('ended', hideIntro);
-
-        // Вариант 2: если хочешь автозакрытие через 5 сек независимо от окончания
-        // setTimeout(hideIntro, 5000);
-
-        function hideIntro() {
-            introWrap.classList.add('fade-out');
-
-            // Появление основного сайта после скрытия
-            setTimeout(() => {
-                introWrap.remove();
-                document.body.classList.add('reveal-start');
-                document.querySelector('.block1')?.classList.add('show');
-            }, 1000); // дождаться fade-out
+        
+        // Авто-скрытие через 4 секунды или по окончанию видео
+        if (video) {
+            video.addEventListener('ended', hideIntro, { once: true });
+            setTimeout(hideIntro, 4000);
+        } else {
+            hideIntro();
         }
+        
+        // Скролл наверх
+        window.scrollTo(0, 0);
     });
 </script>
 
 <script>
-    /* 1) полифилл для старых Safari — берём у WICG, 4 KB */
+    // Полифилл для старых браузеров и подписка на reveal-delayed
     (async () => {
         if (!('IntersectionObserver' in window)) {
             await import('https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver');
         }
-
-        ['.reveal', '.reveal-delayed'].forEach(sel =>
-            document.querySelectorAll(sel).forEach(el => observer.observe(el)));
+        
+        // Используем уже созданный observer из предыдущего скрипта
+        if (typeof observer !== 'undefined') {
+            ['.reveal', '.reveal-delayed'].forEach(sel =>
+                document.querySelectorAll(sel).forEach(el => observer.observe(el)));
+        }
     })();
-    /* 2) подписываемся и на reveal‑delayed */
-    ['.reveal', '.reveal-delayed'].forEach(sel =>
-        document.querySelectorAll(sel).forEach(el => observer.observe(el)));
 </script>
 <script>
-    /* В head или самым первым в body */
+    // Отключаем автоматическое восстановление позиции скролла
     if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
     }
-
-    /* подстраховка: мгновенно наверх после полной загрузки */
-    window.addEventListener('load', () => window.scrollTo(0, 0));
 </script>
 
 <script>
@@ -809,66 +759,38 @@ swipe(gallery,
 </script>
 
 <script>
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-    const video = document.getElementById('intro-video');
-    const gif = document.getElementById('intro-fallback');
+    // Оптимизация для iOS - замена видео на GIF
+    document.addEventListener('DOMContentLoaded', () => {
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        const video = document.getElementById('intro-video');
+        const gif = document.getElementById('intro-fallback');
 
-    if (isIOS) {
-        // Показать gif только на iOS
-        video.remove(); // убираем тег <video> полностью
-        gif.src = "https://storage.yandexcloud.net/innowhite-gif-bucket/intro2_silent2.gif";
-        gif.style.display = "block";
-    } else {
-        // Если не iOS, удалить <img> из DOM — даже не грузим gif
-        gif.remove();
-    }
+        if (isIOS && gif) {
+            // Показать gif только на iOS
+            if (video) video.remove();
+            gif.src = "https://storage.yandexcloud.net/innowhite-gif-bucket/intro2_silent2.gif";
+            gif.style.display = "block";
+        } else if (gif) {
+            // Если не iOS, удалить <img> из DOM — даже не грузим gif
+            gif.remove();
+        }
+    });
 </script>
 <script>
     // ===== History API для красивых URL вместо якорей =====
-    const pages = ['page0', 'page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7', 'page8'];
-    const pageNames = {
-        'page0': '/',
-        'page1': '/info',
-        'page2': '/tasks',
-        'page3': '/products',
-        'page4': '/assortment',
-        'page5': '/advantages',
-        'page6': '/partnership',
-        'page7': '/gallery',
-        'page8': '/contacts'
-    };
-    
-    // Функция для скролла к элементу
-    function scrollToPage(pageId) {
-        const element = document.getElementById(pageId);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-    
-    // Перехватываем клики по ссылкам
-    document.querySelectorAll('a[href^="#page"]').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const pageId = this.getAttribute('href').substring(1); // убираем #
-            const cleanUrl = pageNames[pageId] || '/' + pageId;
-            
-            // Меняем URL без перезагрузки
-            window.history.pushState({ page: pageId }, '', cleanUrl);
-            scrollToPage(pageId);
-        });
-    });
-    
-    // Обработка кнопок браузера (назад/вперед)
-    window.addEventListener('popstate', function(e) {
-        if (e.state && e.state.page) {
-            scrollToPage(e.state.page);
-        }
-    });
-    
-    // При загрузке страницы проверяем текущий URL
-    window.addEventListener('load', function() {
-        const path = window.location.pathname;
+    document.addEventListener('DOMContentLoaded', () => {
+        const pageNames = {
+            'page0': '/',
+            'page1': '/info',
+            'page2': '/tasks',
+            'page3': '/products',
+            'page4': '/assortment',
+            'page5': '/advantages',
+            'page6': '/partnership',
+            'page7': '/gallery',
+            'page8': '/contacts'
+        };
+        
         const pageMap = {
             '/': 'page0',
             '/info': 'page1',
@@ -881,6 +803,35 @@ swipe(gallery,
             '/contacts': 'page8'
         };
         
+        // Функция для скролла к элементу
+        function scrollToPage(pageId) {
+            const element = document.getElementById(pageId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        // Перехватываем клики по ссылкам
+        document.querySelectorAll('a[href^="#page"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageId = this.getAttribute('href').substring(1);
+                const cleanUrl = pageNames[pageId] || '/' + pageId;
+                
+                window.history.pushState({ page: pageId }, '', cleanUrl);
+                scrollToPage(pageId);
+            });
+        });
+        
+        // Обработка кнопок браузера (назад/вперед)
+        window.addEventListener('popstate', function(e) {
+            if (e.state && e.state.page) {
+                scrollToPage(e.state.page);
+            }
+        });
+        
+        // При загрузке страницы проверяем текущий URL
+        const path = window.location.pathname;
         if (pageMap[path]) {
             scrollToPage(pageMap[path]);
         }
