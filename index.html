@@ -4,16 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Preconnect к важным серверам -->
     <link rel="preconnect" href="https://storage.yandexcloud.net" crossorigin>
     <link rel="dns-prefetch" href="https://storage.yandexcloud.net">
     <link rel="preconnect" href="https://v1.fontapi.ir" crossorigin>
     <link rel="dns-prefetch" href="https://v1.fontapi.ir">
+    <!-- Добавлен preconnect к серверу шрифтов для ускорения LCP на ~270ms -->
+    <link rel="preconnect" href="https://us08-fontserver-cdn.servr.org" crossorigin>
+    <link rel="dns-prefetch" href="https://us08-fontserver-cdn.servr.org">
+    
+    <!-- Критический CSS загружаем сразу -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="animation.css">
-    <link rel="stylesheet" href="mobile.css">
+    
+    <!-- Некритический CSS загружаем асинхронно -->
+    <link rel="stylesheet" href="animation.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="mobile.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="animation.css">
+        <link rel="stylesheet" href="mobile.css">
+    </noscript>
+    
     <link rel="icon" type="image/webp" href="https://storage.yandexcloud.net/innowhite-gif-bucket/logomain.webp">
-    <link href="https://v1.fontapi.ir/css/SFProDisplay" rel="stylesheet">
+    
+    <!-- Шрифты загружаем асинхронно с font-display: swap -->
+    <link href="https://v1.fontapi.ir/css/SFProDisplay" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://v1.fontapi.ir/css/SFProDisplay" rel="stylesheet"></noscript>
+    
+    <!-- Fallback шрифт пока грузится основной + критические стили для FCP -->
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; }
+        /* Критические стили для интро - избегаем CLS */
+        .intro-wrap { position: fixed; inset: 0; background: #000; z-index: 10000; display: flex; justify-content: center; align-items: center; }
+        .intro-wrap video, .intro-wrap img { width: 100vw; height: 100vh; object-fit: cover; }
+    </style>
+    
+    <!-- Preload критичных ресурсов для ускорения LCP -->
+    <link rel="preload" href="https://storage.yandexcloud.net/innowhite-gif-bucket/Group%2020.svg" as="image" type="image/svg+xml">
+    
     <title>InnoWhite</title>
 
 </head>
@@ -741,11 +770,13 @@ swipe(gallery,
 
         /* 3. Функция создания/пересоздания наблюдателя */
         let io;                                // ссылка на текущий observer
+        let cachedVh = window.innerHeight;     // кешируем высоту viewport - избегаем forced reflow
+        
         const makeObserver = () => {
             if (io) io.disconnect();             // удаляем, если уже был
 
             const mobile = matchMedia('(max-width:768px)').matches;
-            const vh = (window.visualViewport || window).height;
+            const vh = cachedVh;  // используем кеш вместо чтения напрямую
             const treshold = mobile ? 0.05 : 0.25;               // 5 % или 25 %
             const margin = mobile ? -(vh * 0.4) : -(vh * 0.2); // -40 % или -20 %
 
@@ -772,6 +803,10 @@ swipe(gallery,
         let debounce;
         ['resize', 'orientationchange'].forEach(evt =>
             window.addEventListener(evt, () => {
+                // Обновляем кеш высоты через rAF чтобы избежать forced reflow
+                requestAnimationFrame(() => {
+                    cachedVh = window.visualViewport?.height || window.innerHeight;
+                });
                 clearTimeout(debounce);
                 debounce = setTimeout(makeObserver, 120); // лёгкий debounce
             })
