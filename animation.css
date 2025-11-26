@@ -527,6 +527,13 @@ body.reveal-start .reveal-delayed {
   object-fit: cover;
 }
 
+/* Fallback изображение для мобильных */
+.intro-wrap #intro-fallback {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
 /* скрытие интро */
 .intro-wrap.fade-out {
   opacity: 0;
