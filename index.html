@@ -440,29 +440,17 @@
 <script src="script.js" defer>
 </script>
 <script>
+    // Автоплей видео только для десктопа
     document.addEventListener('DOMContentLoaded', () => {
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
+                         || window.innerWidth <= 768;
+        if (isMobile) return; // На мобильных интро отключено
+        
         const v = document.getElementById('intro-video');
-        const gif = document.getElementById('intro-fallback');
+        if (!v) return;
 
-        if (!v) return; // Видео уже удалено (iOS с GIF)
-
-        /*‑‑ страховка для iOS: задаём muted и пытаемся запустить вручную ‑‑*/
-        v.muted = true;                // свойство, не только атрибут
-        v.play().catch(() => {
-            /* если всё‑таки заблокировало, ждём первого тапа и сразу играем */
-            const resume = () => { 
-                v.play().catch(() => {
-                    // Если и после тапа не работает - показываем GIF
-                    if (gif) {
-                        v.style.display = 'none';
-                        gif.src = "https://storage.yandexcloud.net/innowhite-gif-bucket/intro2_silent2.gif";
-                        gif.style.display = "block";
-                    }
-                }); 
-                document.removeEventListener('touchstart', resume); 
-            };
-            document.addEventListener('touchstart', resume);
-        });
+        v.muted = true;
+        v.play().catch(() => {});
     });
 </script>
 <script>
@@ -664,11 +652,19 @@ dots.forEach((dot, i) => dot.onclick = () => {
 
 
 <script>
-    // Объединенный обработчик загрузки страницы
+    // Объединенный обработчик загрузки страницы (только для десктопа)
     window.addEventListener('load', () => {
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
+                         || window.innerWidth <= 768;
+        
+        // На мобильных интро уже обработано в DOMContentLoaded
+        if (isMobile) {
+            window.scrollTo(0, 0);
+            return;
+        }
+        
         const introWrap = document.getElementById('intro-video-wrap');
         const video = document.getElementById('intro-video');
-        const gif = document.getElementById('intro-fallback');
         
         function hideIntro() {
             if (!introWrap) return;
@@ -682,18 +678,11 @@ dots.forEach((dot, i) => dot.onclick = () => {
             }, 1500);
         }
         
-        // Авто-скрытие через 4 секунды или по окончанию видео/GIF
-        const hasVideo = video && video.style.display !== 'none';
-        const hasGif = gif && gif.style.display !== 'none';
-        
-        if (hasVideo) {
+        // Только для десктопа с видео
+        if (video) {
             video.addEventListener('ended', hideIntro, { once: true });
             setTimeout(hideIntro, 4000);
-        } else if (hasGif) {
-            // Для GIF просто ждём 3.5 секунды
-            setTimeout(hideIntro, 3500);
         } else {
-            // Если ничего нет - скрываем сразу
             hideIntro();
         }
         
@@ -816,58 +805,52 @@ swipe(gallery,
 </script>
 
 <script>
-    // Оптимизация для мобильных устройств - замена видео на GIF при проблемах
+    // Оптимизация для мобильных устройств - пропускаем интро полностью
     document.addEventListener('DOMContentLoaded', () => {
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
                          || window.innerWidth <= 768;
+        const introWrap = document.getElementById('intro-video-wrap');
         const video = document.getElementById('intro-video');
         const gif = document.getElementById('intro-fallback');
 
-        function showFallbackGif() {
-            if (gif) {
-                if (video) video.style.display = 'none';
-                gif.src = "https://storage.yandexcloud.net/innowhite-gif-bucket/intro2_silent2.webp";
-                gif.style.display = "block";
+        // На мобильных устройствах - пропускаем интро полностью для быстрой загрузки
+        if (isMobile) {
+            // Удаляем видео и gif - не грузим ничего тяжёлого
+            if (video) video.remove();
+            if (gif) gif.remove();
+            
+            // Быстро скрываем интро с коротким fade
+            if (introWrap) {
+                introWrap.style.transition = 'opacity 0.3s ease';
+                introWrap.style.opacity = '0';
+                setTimeout(() => {
+                    introWrap.remove();
+                    document.body.classList.add('reveal-start');
+                    document.querySelector('.block1')?.classList.add('show');
+                }, 300);
             }
+            return; // Выходим - не грузим ничего лишнего
         }
 
-        // На iOS сразу показываем GIF
-        if (isIOS && gif) {
-            if (video) video.remove();
-            gif.src = "https://storage.yandexcloud.net/innowhite-gif-bucket/intro2_silent2.webp";
-            gif.style.display = "block";
-        } else if (video && gif) {
-            // Для других устройств - проверяем можно ли воспроизвести видео
+        // Только для десктопа - показываем видео интро
+        if (video && gif) {
+            gif.remove(); // На десктопе gif не нужен
+            
             let videoStarted = false;
             
-            // Обработка ошибки загрузки видео
-            video.addEventListener('error', () => {
-                if (!videoStarted) showFallbackGif();
-            });
-            
-            // Если видео не начало играть за 2 секунды - показываем GIF
-            setTimeout(() => {
-                if (!videoStarted && (video.paused || video.readyState < 3)) {
-                    showFallbackGif();
-                }
-            }, 2000);
-            
-            // Отмечаем что видео началось
             video.addEventListener('playing', () => {
                 videoStarted = true;
-                gif.remove(); // Удаляем fallback если видео работает
             });
             
-            // Для мобильных устройств пробуем запустить видео
-            if (isMobile) {
-                video.play().catch(() => {
-                    // Если не получилось - показываем GIF
-                    showFallbackGif();
-                });
-            }
-        } else if (gif && !video) {
-            gif.remove();
+            // Если видео не началось за 2 сек - скрываем интро
+            setTimeout(() => {
+                if (!videoStarted && (video.paused || video.readyState < 3)) {
+                    if (introWrap) {
+                        introWrap.classList.add('fade-out');
+                        setTimeout(() => introWrap.remove(), 500);
+                    }
+                }
+            }, 2000);
         }
     });
 </script>
