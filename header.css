@@ -59,7 +59,7 @@ header{
     width: 100%;
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
-    z-index: 100;
+    z-index: 1000;
 }
 
 .mobile-header-inner {
@@ -171,3 +171,4 @@ header{
     animation: centerBounceIn 1.4s ease-out forwards;
   }
   
+
