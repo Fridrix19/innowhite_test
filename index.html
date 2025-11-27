@@ -2,6 +2,29 @@
 <html lang="ru">
 
 <head>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105542274', 'ym');
+        ym(105542274, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/105542274" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8DVEVQ9VS8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8DVEVQ9VS8');
+    </script>
+    <!-- /Google Analytics -->
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -37,11 +60,148 @@
         body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; }
         /* Критические стили для интро - избегаем CLS */
         .intro-wrap { position: fixed; inset: 0; background: #000; z-index: 10000; display: flex; justify-content: center; align-items: center; }
-        .intro-wrap video, .intro-wrap img { width: 100vw; height: 100vh; object-fit: cover; }
+        .intro-wrap video { width: 100vw; height: 100vh; object-fit: cover; }
+        
+        /* Мобильный прелоадер - скрыт по умолчанию */
+        .intro-mobile { display: none; overflow: hidden; }
+        .intro-desktop { display: flex; }
+        
+        /* Контейнер волн */
+        .wave-container {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+        
+        /* Одна плавная волна при приземлении */
+        .wave {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(0);
+        }
+        
+        /* Главная волна - тёмная и плавная */
+        .wave-1 { 
+            width: 200px; 
+            height: 200px; 
+            background: radial-gradient(circle, 
+                transparent 0%, 
+                transparent 20%,
+                rgba(8, 15, 35, 0.15) 28%,
+                rgba(12, 22, 50, 0.28) 36%,
+                rgba(15, 28, 65, 0.4) 44%,
+                rgba(18, 32, 75, 0.48) 52%,
+                rgba(15, 28, 65, 0.4) 60%,
+                rgba(12, 22, 50, 0.28) 70%,
+                rgba(8, 15, 35, 0.12) 82%,
+                transparent 100%
+            );
+            box-shadow: 
+                0 0 120px rgba(15, 30, 80, 0.35), 
+                0 0 200px rgba(10, 22, 60, 0.2);
+            animation: waveExpand 7s cubic-bezier(0.05, 0.6, 0.2, 1) 2.8s forwards; 
+        }
+        
+        /* Скрываем остальные волны */
+        .wave-2, .wave-3 { 
+            display: none;
+        }
+        
+        @keyframes waveExpand {
+            0% { 
+                transform: scale(0); 
+                opacity: 0; 
+            }
+            8% {
+                opacity: 1;
+            }
+            35% { 
+                opacity: 0.9; 
+            }
+            60% { 
+                opacity: 0.5; 
+            }
+            85% { 
+                opacity: 0.15; 
+            }
+            100% { 
+                transform: scale(35); 
+                opacity: 0; 
+            }
+        }
+        
+        /* Логотип - медленное появление + один мягкий прыжок */
+        .mobile-logo-anim {
+            width: 180px;
+            height: auto;
+            z-index: 2;
+            opacity: 0;
+            transform: scale(0.85);
+            animation: logoFadeIn 1.2s ease-out forwards, logoBounce 1.2s cubic-bezier(0.34, 1.5, 0.64, 1) 2s forwards;
+        }
+        
+        @keyframes logoFadeIn {
+            0% { 
+                opacity: 0;
+                transform: scale(0.85);
+            }
+            100% { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Один плавный прыжок */
+        @keyframes logoBounce {
+            0% { 
+                transform: scale(1); 
+            }
+            40% { 
+                transform: scale(1.12); 
+            }
+            100% { 
+                transform: scale(1); 
+            }
+        }
+        
+        
+        /* Логотип улетает - медленный плавный зум */
+        .mobile-logo-anim.fly-away {
+            animation: logoZoomOut 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+        }
+        
+        @keyframes logoZoomOut {
+            0% { 
+                opacity: 1; 
+                transform: scale(1); 
+            }
+            60% {
+                opacity: 0.6;
+            }
+            100% { 
+                opacity: 0; 
+                transform: scale(3); 
+            }
+        }
+        
+        /* Fade out для всего прелоадера - очень плавный */
+        .intro-mobile.fade-out {
+            animation: introFadeOut 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        
+        @keyframes introFadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
     </style>
     
     <!-- Preload критичных ресурсов для ускорения LCP -->
     <link rel="preload" href="https://storage.yandexcloud.net/innowhite-gif-bucket/Group%2020.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="https://storage.yandexcloud.net/innowhite-gif-bucket/logoanimation.svg" as="image" type="image/svg+xml">
     
     <title>InnoWhite</title>
 
@@ -49,12 +209,22 @@
 
 <body class="loading">
 
-    <div id="intro-video-wrap" class="intro-wrap" >
+    <!-- Десктоп: видео интро -->
+    <div id="intro-video-wrap" class="intro-wrap intro-desktop">
         <video id="intro-video" playsinline webkit-playsinline autoplay muted loop preload="auto" disablePictureInPicture>
             <source src="https://storage.yandexcloud.net/innowhite-gif-bucket/into.webm" type="video/webm">
             <source src="https://storage.yandexcloud.net/innowhite-gif-bucket/into.mp4" type="video/mp4">
         </video>
-        <img id="intro-fallback" alt="Intro" style="display: none;" loading="eager" fetchpriority="high">
+    </div>
+    
+    <!-- Мобильный: анимированный логотип с волной -->
+    <div id="intro-mobile" class="intro-wrap intro-mobile">
+        <div class="wave-container">
+            <div class="wave wave-1"></div>
+            <div class="wave wave-2"></div>
+            <div class="wave wave-3"></div>
+        </div>
+        <img class="mobile-logo-anim" src="https://storage.yandexcloud.net/innowhite-gif-bucket/logoanimation.svg" alt="InnoWhite">
     </div>
 
     <div class="main">
@@ -444,7 +614,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
                          || window.innerWidth <= 768;
-        if (isMobile) return; // На мобильных интро отключено
+        if (isMobile) return; // На мобильных используется другой прелоадер
         
         const v = document.getElementById('intro-video');
         if (!v) return;
@@ -652,12 +822,12 @@ dots.forEach((dot, i) => dot.onclick = () => {
 
 
 <script>
-    // Объединенный обработчик загрузки страницы (только для десктопа)
+    // Обработчик загрузки страницы (только для десктопа)
     window.addEventListener('load', () => {
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
                          || window.innerWidth <= 768;
         
-        // На мобильных интро уже обработано в DOMContentLoaded
+        // На мобильных интро обрабатывается отдельно
         if (isMobile) {
             window.scrollTo(0, 0);
             return;
@@ -805,52 +975,40 @@ swipe(gallery,
 </script>
 
 <script>
-    // Оптимизация для мобильных устройств - пропускаем интро полностью
+    // Мобильный прелоадер с анимированным логотипом
     document.addEventListener('DOMContentLoaded', () => {
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
                          || window.innerWidth <= 768;
-        const introWrap = document.getElementById('intro-video-wrap');
-        const video = document.getElementById('intro-video');
-        const gif = document.getElementById('intro-fallback');
-
-        // На мобильных устройствах - пропускаем интро полностью для быстрой загрузки
+        
+        const introDesktop = document.getElementById('intro-video-wrap');
+        const introMobile = document.getElementById('intro-mobile');
+        const mobileLogo = document.querySelector('.mobile-logo-anim');
+        
         if (isMobile) {
-            // Удаляем видео и gif - не грузим ничего тяжёлого
-            if (video) video.remove();
-            if (gif) gif.remove();
-            
-            // Быстро скрываем интро с коротким fade
-            if (introWrap) {
-                introWrap.style.transition = 'opacity 0.3s ease';
-                introWrap.style.opacity = '0';
+            // На мобильных: скрываем десктопное интро, показываем мобильное
+            if (introDesktop) introDesktop.remove();
+            if (introMobile) {
+                introMobile.style.display = 'flex';
+                
+                // Тайминги: появление 1.2с → bounce (начало 2с) → волна (начало 2.8с) → вылет во время волны
+                // Логотип вылетает пока волна ещё идёт
                 setTimeout(() => {
-                    introWrap.remove();
-                    document.body.classList.add('reveal-start');
-                    document.querySelector('.block1')?.classList.add('show');
-                }, 300);
+                    if (mobileLogo) mobileLogo.classList.add('fly-away');
+                }, 5200);
+                
+                // Скрываем весь прелоадер плавно
+                setTimeout(() => {
+                    introMobile.classList.add('fade-out');
+                    setTimeout(() => {
+                        introMobile.remove();
+                        document.body.classList.add('reveal-start');
+                        document.querySelector('.block1')?.classList.add('show');
+                    }, 800);
+                }, 6400);
             }
-            return; // Выходим - не грузим ничего лишнего
-        }
-
-        // Только для десктопа - показываем видео интро
-        if (video && gif) {
-            gif.remove(); // На десктопе gif не нужен
-            
-            let videoStarted = false;
-            
-            video.addEventListener('playing', () => {
-                videoStarted = true;
-            });
-            
-            // Если видео не началось за 2 сек - скрываем интро
-            setTimeout(() => {
-                if (!videoStarted && (video.paused || video.readyState < 3)) {
-                    if (introWrap) {
-                        introWrap.classList.add('fade-out');
-                        setTimeout(() => introWrap.remove(), 500);
-                    }
-                }
-            }, 2000);
+        } else {
+            // На десктопе: удаляем мобильное интро
+            if (introMobile) introMobile.remove();
         }
     });
 </script>
